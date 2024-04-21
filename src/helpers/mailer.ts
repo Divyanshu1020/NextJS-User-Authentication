@@ -35,10 +35,10 @@ try {
 
     }else if(emailType === "forgotPassword"){
       await User.findByIdAndUpdate(userId,
-        {
+        {$set :{
           forgetPasswordToken: hashedUserId,
           forgetPsswordExpiry: Date.now() + 10 * 60 * 1000
-        }
+        }}
       )
       //* Email HTML template
       emailTemplate = `
